@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+require("dotenv").config();
 const { homeRoute } = require("../controller/auth");
 
 router.get("/home", homeRoute);
@@ -27,7 +27,7 @@ app.post("/home", (req, res) => {
     res.redirect("/");
   });
   const jsonData = JSON.stringify(originData);
-  const url = "https://us8.api.mailchimp.com/3.0/lists/3dcea90ca4";
+  const url = process.env.MAIL_CHIMP;
   const options = {
     method: "POST",
     auth: "erinfolami:deb3cbdf1e6816680078171a1184e5d3-us8",
